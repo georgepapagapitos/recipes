@@ -1,0 +1,46 @@
+@import '../../styles/main.scss';
+
+.navbar {
+  overflow: hidden;
+  background-color: $color-primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 16px;
+  height: 60px;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+
+  &--right {
+    display: flex;
+
+    &-item {
+      text-transform: lowercase;
+      margin-left: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 650;
+
+      &:hover {
+        text-decoration: underline;
+      };
+
+      @media screen and (max-width: 580px) {
+        display: none;
+      }
+    }
+  }
+
+  &--icon {
+    display: none;
+
+    @media screen and (max-width: 580px) {
+      display: flex;
+      color: white;
+    }
+  }
+}
