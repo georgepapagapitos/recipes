@@ -13,7 +13,6 @@
   z-index: 1;
   top: 0;
 
-
   &--right {
     display: flex;
 
@@ -28,7 +27,7 @@
       &:hover {
         text-decoration: underline;
       };
-
+      
       @media screen and (max-width: 580px) {
         display: none;
       }

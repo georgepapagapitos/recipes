@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-import Home from './pages/Home/Home.jsx';
-import RecipePage from './pages/RecipePage/RecipePage.jsx';
+import { Home, Login, Register, RecipePage } from './pages';
 import { NavBar } from './components';
+import AddRecipe from './pages/AddRecipe/AddRecipe';
 
 function App() {
-
   const [recipes, setRecipes] = useState([]);
 
   const fetchRecipes = async () => {
@@ -17,17 +16,24 @@ function App() {
       console.error({ message: err.message });
     }
   };
-
   useEffect(() => {
     fetchRecipes();
   }, []);
 
+  const links = [
+    { text: 'home.', to: '/recipes' },
+    { text: 'add a recipe.', to: '/recipes/add' }
+  ];
+
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar links={links} />
       <Routes>
-        <Route path='/' element={<Home recipes={recipes} fetchRecipes={fetchRecipes} />} />
-        <Route path='/:id' element={<RecipePage />} />
+        <Route index path='/recipes' element={<Home recipes={recipes} />} />
+        <Route path='/recipes/:id' element={<RecipePage />} />
+        <Route path='/recipes/add' element={<AddRecipe />} />
+        <Route exact path='/register' element={<Register />} />
+        <Route exact path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

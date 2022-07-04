@@ -1,16 +1,14 @@
 @import '../../styles/main.scss';
 
-.banner {
+.home {
+  padding: 3rem 4rem;
+  justify-content: space-between;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  background-color: $color-secondary-light;
-  height: 300px;
-  width: 100vw;
+  flex-flow: row wrap;
+  gap: 2rem;
 
-  @media screen and (max-width: 320px) {
-    flex-direction: column;
+  &::after {
+    content: '';
+    flex: auto;
   }
 }
