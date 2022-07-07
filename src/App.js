@@ -1,42 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import axios from 'axios';
-import { Home, Login, Register, RecipePage } from './pages';
-import { NavBar } from './components';
-import AddRecipe from './pages/AddRecipe/AddRecipe';
+import React, { Suspense } from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Home } from './pages';
+import './styles/global.scss';
 
-function App() {
-  const [recipes, setRecipes] = useState([]);
+const recipes = [
+  { name: 'falafel', description: 'good stuff', id: 1 }
+]
 
-  const fetchRecipes = async () => {
-    try {
-      const recipes = await axios.get('/api/v1/recipes');
-      setRecipes(recipes.data);
-    } catch (err) {
-      console.error({ message: err.message });
-    }
-  };
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
-
-  const links = [
-    { text: 'home.', to: '/recipes' },
-    { text: 'add a recipe.', to: '/recipes/add' }
-  ];
-
-  return (
-    <BrowserRouter>
-      <NavBar links={links} />
+const App = () => (
+  <BrowserRouter>
+    <Suspense>
       <Routes>
-        <Route index path='/recipes' element={<Home recipes={recipes} />} />
-        <Route path='/recipes/:id' element={<RecipePage />} />
-        <Route path='/recipes/add' element={<AddRecipe />} />
-        <Route exact path='/register' element={<Register />} />
-        <Route exact path='/login' element={<Login />} />
+        <Route element={<Home recipes={recipes} />} path="/*" />
       </Routes>
-    </BrowserRouter>
-  );
-}
+    </Suspense>
+  </BrowserRouter>
+);
 
 export default App;

@@ -17,7 +17,7 @@ const NavBar = (props) => {
     </div>
     <div className='navbar--right'>
       {links.map(link => (
-        <NavLink to={link.to} key={link.text} className='navbar--right-item' style={({isActive}) => isActive ? activeStyle : undefined}>{link.text}</NavLink>
+        <NavLink to={link.to} key={link.text} className='navbar--right-item' style={({isActive}) => isActive ? activeStyle : undefined}>{link.text + '.'}</NavLink>
       ))}
     </div>
   </div>
