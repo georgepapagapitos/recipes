@@ -23,12 +23,14 @@ const App = () => {
   };
 
   const deleteRecipe = (e, recipeID) => {
-    e.preventDefault();
-    requests.delete(`/api/v1/recipes/${recipeID}`);
-    const newRecipeArray = recipes.filter(recipe => recipe.id !== recipeID);
-    setRecipes(newRecipeArray);
-    navigate(-1);
-  }
+    if (window.confirm('u sure?')) {
+      e.preventDefault();
+      requests.delete(`/api/v1/recipes/${recipeID}`);
+      const newRecipeArray = recipes.filter(recipe => recipe.id !== recipeID);
+      setRecipes(newRecipeArray);
+      navigate(-1);
+    }
+  };
 
   return (
     <>

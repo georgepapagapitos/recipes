@@ -1,8 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import Button from '../Button/Button';
 import './card.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
 
 const Card = (props) => {
   const { heading, description, image, altText, id, backgroundColor = '' } = props;
@@ -18,22 +18,20 @@ const Card = (props) => {
     navigate(`/${recipeId}`);
   };
 
-  const styles = { backgroundColor: backgroundColor };
+  const styles = { backgroundColor };
 
   return (
     <div className={cardClasses}>
-      <Link to={`/${id}`}>
-        <div className='card--header' style={styles}>
-          <h2 className='card--header-heading'>{heading}</h2>
-          {image &&
-            <img
-              className='card--header-image'
-              src={image}
-              alt={altText}
+      <div className='card--header' style={styles} onClick={() => goToRecipe(id)}>
+        <h2 className='card--header-heading'>{heading}</h2>
+        {image &&
+          <img
+            className='card--header-image'
+            src={image}
+            alt={altText}
             />
           }
-        </div>
-      </Link>
+      </div>
       <div className='card--content'>
           <p>{description}</p>
       </div>
