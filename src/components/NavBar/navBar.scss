@@ -13,6 +13,10 @@
   z-index: 1;
   top: 0;
 
+  &--header {
+    cursor: pointer;
+  }
+
   &--right {
     display: flex;
 

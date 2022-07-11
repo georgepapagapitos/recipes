@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './navBar.scss';
 
 const NavBar = (props) => {
-
   const { links } = props;
+  
+  const navigate = useNavigate();
 
   const activeStyle = {
     textDecoration: 'underline',
@@ -13,7 +14,7 @@ const NavBar = (props) => {
   return (
   <div className='navbar' id='navbar'>
     <div className='navbar--left'>
-      <h1 className='navbar--header'>recipes.</h1>
+      <h1 className='navbar--header' onClick={() => navigate('/')}>recipes.</h1>
     </div>
     <div className='navbar--right'>
       {links.map(link => (

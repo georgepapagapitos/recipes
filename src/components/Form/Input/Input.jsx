@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './input.scss';
 
 const Input = (props) => {
-  const { placeholder, type = 'text', onChange, value, children } = props;
+  const { placeholder, type = 'text', onChange, value, name, children } = props;
 
   const placeholderText = placeholder ? placeholder : children;
 
@@ -18,6 +18,7 @@ const Input = (props) => {
       onChange={onChange}
       value={value}
       className={inputClasses}
+      name={name}
     />
   );
 };

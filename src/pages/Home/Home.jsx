@@ -1,22 +1,14 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
-import { Card, NavBar } from '../../components';
-import { recipeListAtom } from '../../recoil/atoms/recipeAtom';
+import { Card } from '../../components';
 import './home.scss';
 
-const links = [
-  { text: 'home', to: '/' },
-  { text: 'add recipes', to: '/add' },
-];
-
-const Home = () => {
-  const recipes = useRecoilState(recipeListAtom);
+const Home = (props) => {
+  const { recipes } = props;
 
   return (
     <>
-      <NavBar links={links} />
       <div className='home'>
-        {recipes && recipes.map(recipe => (
+        {recipes.map(recipe => (
           <Card
             backgroundColor='blue'
             id={recipe.id}
