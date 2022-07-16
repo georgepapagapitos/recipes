@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Typography } from '../../components';
+import { fetchRecipe } from '../../context/recipes/apiCalls';
+import { RecipeContext } from '../../context/recipes/context';
 
 const RecipePage = () => {
   const { id } = useParams();
 
-  console.log(id);
+  const { recipe, dispatch } = useContext(RecipeContext);
 
-  const recipe = { name: '', description: '' };
+  useEffect(() => {
+    fetchRecipe(dispatch, id);
+  }, [id]);
 
   return (
     <>
@@ -18,6 +22,7 @@ const RecipePage = () => {
       </div>
     </>
   );
+
 };
 
 export default RecipePage;

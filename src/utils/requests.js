@@ -5,7 +5,7 @@ async function httpRequest(method, url, request) {
     const response = await axios[method](url, request);
     return response;
   } catch (err) {
-    console.error({ message: err.message });
+    console.error({ [method]: err.message });
   }
 }
 

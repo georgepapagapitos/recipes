@@ -5,6 +5,11 @@ export const recipeReducer = (state, { type, payload }) => {
         ...state,
         recipes: payload,
       };
+    case 'SET_RECIPE':
+      return {
+        ...state,
+        recipe: payload,
+      };
     case 'ADD_RECIPE':
       return {
         recipes: [

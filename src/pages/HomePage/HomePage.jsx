@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { RecipeContext } from '../../context/recipes/context';
+import { setRecipe } from '../../context/recipes/actions';
 import { fetchRecipes } from '../../context/recipes/apiCalls';
 import { Card } from '../../components';
 import './homePage.scss';
@@ -9,6 +10,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchRecipes(dispatch);
+    dispatch(setRecipe({}));
   }, []);
 
   return (
@@ -18,7 +20,6 @@ const HomePage = () => {
           backgroundColor='blue'
           id={recipe.id}
           heading={recipe.name}
-          image={`https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/200/300`}
           altText={recipe.name}
           description={recipe.description}
           key={recipe.id}
