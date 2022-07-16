@@ -1,8 +1,9 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames';
+import { ButtonProps } from './button.interface';
 import './button.scss';
 
-const Button = (props) => {
+const Button = (props: ButtonProps) => {
   const { buttonType = 'primary', text, size = 'medium', onClick } = props;
 
   const buttonClasses = classNames({
@@ -15,6 +16,6 @@ const Button = (props) => {
   return (
     <button className={buttonClasses} onClick={onClick}>{text}</button>
   );
-}
+};
 
 export default Button;

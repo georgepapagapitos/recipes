@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import Button from '../Button/Button';
+import { Button, Typography } from '../';
 import './card.scss';
 
 const Card = (props) => {
@@ -23,17 +23,17 @@ const Card = (props) => {
   return (
     <div className={cardClasses}>
       <div className='card--header' style={styles} onClick={() => goToRecipe(id)}>
-        <h2 className='card--header-heading'>{heading}</h2>
+        <Typography component='h2' className='card--header-heading'>{heading}</Typography>
         {image &&
           <img
             className='card--header-image'
             src={image}
             alt={altText}
-            />
-          }
+          />
+        }
       </div>
       <div className='card--content'>
-          <p>{description}</p>
+        <Typography component='p'>{description}</Typography>
       </div>
       <div className='card--cta'>
         <Button text='go to recipe' onClick={() => goToRecipe(id)} />
@@ -41,6 +41,6 @@ const Card = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default Card;
