@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { RecipeContext } from '../../context/recipes/context';
+import { fetchRecipes } from '../../context/recipes/apiCalls';
 import { Card } from '../../components';
-import './home.scss';
+import './homePage.scss';
 
-const Home = (props) => {
-  const { recipes } = props;
+const HomePage = () => {
+  const { recipes, dispatch } = useContext(RecipeContext);
+
+  useEffect(() => {
+    fetchRecipes(dispatch);
+  }, []);
 
   return (
     <div className='home'>
@@ -22,4 +28,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default HomePage;

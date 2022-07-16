@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Input, Label } from '../../components/Form';
 import { Button } from '../../components';
-import './login.scss';
+import './loginPage.scss';
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <div className='login'>
       <Form>
@@ -17,4 +17,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
