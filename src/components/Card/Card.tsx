@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
-import { Button, Typography } from '../';
+import { Button, Typography } from '..';
+import { CardProps } from './card.interface';
 import './card.scss';
 
-const Card = (props) => {
+const Card = (props: CardProps) => {
   const { heading, description, image, altText, id, backgroundColor = '' } = props;
 
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Card = (props) => {
     [altText]: true,
   });
 
-  const goToRecipe = (recipeId) => {
+  const goToRecipe = (recipeId: string): void => {
     navigate(`/${recipeId}`);
   };
 
@@ -37,7 +38,7 @@ const Card = (props) => {
       </div>
       <div className='card--cta'>
         <Button text='go to recipe' onClick={() => goToRecipe(id)} />
-        <Button text='add to favorites' buttonType='secondary' />
+        <Button text='add to favorites' buttonType='secondary' onClick={() => { }} />
       </div>
     </div>
   );
