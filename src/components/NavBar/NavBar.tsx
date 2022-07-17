@@ -22,7 +22,7 @@ const NavBar = (props: NavBarProps) => {
   return (
     <div className='navbar' id='navbar'>
       <div className='navbar--left'>
-        <Typography component='h1' className='navbar--header' onClick={() => navigate('/')}>recipes.</Typography>
+        <Typography component='h1' variant='h4' className='navbar--header' onClick={() => navigate('/')}>recipes.</Typography>
       </div>
       <div className='navbar--right'>
         {links.map(link => (

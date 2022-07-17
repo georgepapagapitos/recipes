@@ -39,25 +39,36 @@ const AddRecipePage = () => {
     setIngredients(newIngredients);
   };
 
+  const removeEmptyIngredients = (ingredientsArray) => {
+    for (let ingredient in ingredientsArray) {
+      console.log(ingredient);
+    }
+  };
+
   const handleSubmit = (e, recipe) => {
     e.preventDefault();
+    if (!recipe.name) {
+      return;
+    }
+    removeEmptyIngredients(ingredients);
     postRecipe(dispatch, recipe);
     setDetails(initialDetails);
     setIngredients(initialIngredients);
     navigate('/');
+
   };
 
   return (
     <div className='add-recipe'>
-      <Typography component='h1'>add a recipe.</Typography>
+      <Typography component='h1' gutterBottom>add a recipe.</Typography>
       <div className='details'>
         <Form>
-          <Typography component='h2'>details:</Typography>
+          <Typography component='h2' gutterBottom>details:</Typography>
           <Label elementId='name-input' text='name of recipe:' />
           <Input id='name-input' placeholder='enter the recipe name' name='name' value={details.name} onChange={handleChangeDetail} />
           <Label elementId='description-input' text='description:' />
           <Textarea id='description-input' placeholder='enter the description' name='description' value={details.description} onChange={handleChangeDetail} />
-          <Typography component='h2'>ingredients:</Typography>
+          <Typography component='h2' gutterBottom>ingredients:</Typography>
           <ul className='ingredients'>
             {ingredients.map((ingredient, i) => {
               return (

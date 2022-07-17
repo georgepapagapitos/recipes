@@ -12,11 +12,16 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
+  @media screen and (max-width: 580px) {
+    width: 75%;
+  }
+
   &--header {
     color: white;
     position: relative;
     height: 175px;
     cursor: pointer;
+    border-radius: 5px 5px 0 0;
 
     &-image {
       width: 100%;
@@ -49,6 +54,7 @@
     display: flex;
     padding: 1.25rem;
     align-items: center;
+    gap: 1rem;
     height: 75px;
   }
 }

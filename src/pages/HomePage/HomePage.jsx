@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchRecipes(dispatch);
     dispatch(setRecipe({}));
-  }, []);
+  }, [recipes]);
 
   return (
     <div className='home'>

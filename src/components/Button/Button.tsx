@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { ButtonProps } from './button.interface';
 import './button.scss';
 
-const Button = (props: ButtonProps) => {
-  const { buttonType = 'primary', text, size = 'medium', onClick } = props;
+const Button: React.FC<ButtonProps> = (props) => {
+  const { buttonType = 'primary', text, size = 'medium', onClick, children } = props;
 
   const buttonClasses = classNames({
     'btn': true,
@@ -14,7 +14,9 @@ const Button = (props: ButtonProps) => {
   });
 
   return (
-    <button className={buttonClasses} onClick={onClick}>{text}</button>
+    <button className={buttonClasses} onClick={onClick}>
+      {children ? children : text}
+    </button>
   );
 };
 

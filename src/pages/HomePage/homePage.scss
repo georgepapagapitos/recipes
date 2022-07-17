@@ -2,13 +2,7 @@
 
 .home {
   padding: 3rem 4rem;
-  justify-content: space-between;
+  justify-content: space-around;
   display: flex;
   flex-flow: row wrap;
-  gap: 2rem;
-
-  &::after {
-    content: '';
-    flex: auto;
-  }
 }

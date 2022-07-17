@@ -13,12 +13,13 @@ const typographyMap = {
 };
 
 const Typography = (props) => {
-  const { variant, component, className, onClick, children } = props;
+  const { variant, component, className, onClick, gutterBottom, children } = props;
 
   const Element = component ? typographyMap[component] : 'p';
 
   const typographyClasses = classNames(className, {
     [`typography--${variant ? variant : component}`]: true,
+    'gutter-bottom': gutterBottom,
   });
 
   return (

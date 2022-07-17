@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { Button, Typography } from '..';
@@ -23,7 +23,7 @@ const Card = (props: CardProps) => {
   return (
     <div className={cardClasses}>
       <div className='card--header' style={styles} onClick={() => goToRecipe(id)}>
-        {heading && <Typography component='h2' className='card--header-heading'>{heading}</Typography>}
+        {heading && <Typography component='h1' variant='h5' className='card--header-heading'>{heading}</Typography>}
         {image &&
           <img
             className='card--header-image'
@@ -36,8 +36,8 @@ const Card = (props: CardProps) => {
         <Typography component='p'>{content}</Typography>
       </div>
       <div className='card--cta'>
+        <Button text='delete' buttonType='secondary' onClick={() => { }} />
         <Button text='go to recipe' onClick={() => goToRecipe(id)} />
-        <Button text='add to favorites' buttonType='secondary' onClick={() => { }} />
       </div>
     </div>
   );
