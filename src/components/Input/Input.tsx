@@ -1,11 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import './input.scss';
+import { InputProps } from './input.interface';
 
-const Input = (props) => {
-  const { placeholder, type = 'text', onChange, value, name, children } = props;
-
-  const placeholderText = placeholder ? placeholder : children;
+const Input: React.FC<InputProps> = (props) => {
+  const { placeholder, type = 'text', onChange, value, name } = props;
 
   const inputClasses = classNames({
     'input': true,
@@ -14,13 +13,12 @@ const Input = (props) => {
   return (
     <input
       autoComplete='off'
-      placeholder={placeholderText}
+      placeholder={placeholder}
       type={type}
       onChange={onChange}
       value={value}
       className={inputClasses}
-      name={name}
-    />
+      name={name} />
   );
 };
 

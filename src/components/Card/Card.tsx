@@ -5,7 +5,7 @@ import { Button, Typography } from '..';
 import { CardProps } from './card.interface';
 import './card.scss';
 
-const Card = (props: CardProps) => {
+const Card: React.FC<CardProps> = (props) => {
   const { heading, content, image, altText, id, backgroundColor = '' } = props;
 
   const navigate = useNavigate();
@@ -41,6 +41,10 @@ const Card = (props: CardProps) => {
       </div>
     </div>
   );
+};
+
+Card.defaultProps = {
+  backgroundColor: '',
 };
 
 export default Card;

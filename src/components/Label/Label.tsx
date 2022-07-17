@@ -1,7 +1,8 @@
 import React from 'react';
+import { LabelProps } from './label.interface';
 import './label.scss';
 
-const Label = (props) => {
+const Label: React.FC<LabelProps> = (props) => {
   const { elementId, text, children } = props;
 
   const labelText = text ? text : children;

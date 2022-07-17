@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RecipeContext } from '../../context/recipes/context';
 import { postRecipe } from '../../context/recipes/apiCalls';
-import { Button, Form, Label, Input, Typography } from '../../components';
+import { Button, Form, Label, Input, Typography, Textarea } from '../../components';
+import IngredientsForm from './IngredientsForm';
 import './addRecipePage.scss';
-import Textarea from '../../components/Textarea/Textarea';
 
 const AddRecipePage = () => {
   const { dispatch } = useContext(RecipeContext);
@@ -20,23 +20,9 @@ const AddRecipePage = () => {
     setDetails(updatedDetails);
   };
 
-  const handleChangeIndredient = ({ target }, index) => {
-    const newIngredients = ingredients.map(ingredient => {
-      if (ingredient.id === index) ingredient = { ...ingredient, [target.name]: target.value };
-      return ingredient;
-    });
-    setIngredients(newIngredients);
-  };
-
   const handleAddInput = (e) => {
     e.preventDefault();
     setIngredients([...ingredients, { id: ingredients.length, name: '', amt: '', unit: '', prep: '' }]);
-  };
-
-  const handleRemoveInput = (e, id) => {
-    e.preventDefault();
-    const newIngredients = ingredients.filter((ingredient, i) => i !== id);
-    setIngredients(newIngredients);
   };
 
   const removeEmptyIngredients = (ingredientsArray) => {
@@ -69,39 +55,7 @@ const AddRecipePage = () => {
           <Label elementId='description-input' text='description:' />
           <Textarea id='description-input' placeholder='enter the description' name='description' value={details.description} onChange={handleChangeDetail} />
           <Typography component='h2' gutterBottom>ingredients:</Typography>
-          <ul className='ingredients'>
-            {ingredients.map((ingredient, i) => {
-              return (
-                <li key={i} className='ingredients--item'>
-                  <Input
-                    id={`ingredient-name-${i}`}
-                    name='name'
-                    placeholder='whats it called?'
-                    onChange={(e) => handleChangeIndredient(e, i)}
-                  />
-                  <Input
-                    id={`ingredient-amt-${i}`}
-                    name='amt'
-                    placeholder='how much?'
-                    onChange={(e) => handleChangeIndredient(e, i)}
-                  />
-                  <Input
-                    id={`ingredient-unit-${i}`}
-                    name='unit'
-                    placeholder='enter unit'
-                    onChange={(e) => handleChangeIndredient(e, i)}
-                  />
-                  <Input
-                    id={`ingredient-prep-${i}`}
-                    name='prep'
-                    placeholder='prep? (ex. chopped, minced, diced, etc.)'
-                    onChange={(e) => handleChangeIndredient(e, i)}
-                  />
-                  <Button text='X' onClick={(e) => handleRemoveInput(e, i)} />
-                </li>
-              );
-            })}
-          </ul>
+          <IngredientsForm ingredients={ingredients} setIngredients={setIngredients} />
           <Button text='add ingredient' onClick={handleAddInput} />
           <Button
             text='submit'

@@ -1,6 +1,7 @@
 import React from 'react';
+import { SelectProps } from './select.interface';
 
-const Select = (props) => {
+const Select: React.FC<SelectProps> = (props) => {
   const { children, name, id } = props;
 
   return (

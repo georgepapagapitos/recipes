@@ -20,6 +20,7 @@ const HomePage = () => {
           backgroundColor='blue'
           id={recipe.id}
           heading={recipe.name}
+          content={recipe.description}
           altText={recipe.name}
           description={recipe.description}
           key={recipe.id}

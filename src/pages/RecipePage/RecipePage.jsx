@@ -27,13 +27,16 @@ const RecipePage = () => {
   return (
     <div className='recipe-page'>
       <div className='recipe-page--header'>
-        <Typography component='h1'>{recipe.name}</Typography>
+        <Typography component='h1' gutterBottom>{recipe.name}</Typography>
       </div>
       <div className='recipe-page--content'>
-        <Typography>{recipe.description}</Typography>
+        <Typography gutterBottom>{recipe.description}</Typography>
         <Button text='delete recipe.' onClick={(e) => handleDelete(e, id)} />
+        <Typography>
+          <a target='_blank' rel='noopener noreferrer' href={`https://www.allrecipes.com/search/results/?search=${recipe.name}`}>search for recipes</a>
+        </Typography>
       </div>
-    </div>
+    </div >
   );
 
 };

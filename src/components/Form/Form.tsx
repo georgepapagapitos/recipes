@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import './form.scss';
+import { FormProps } from './form.interface';
 
-const Form = (props) => {
+const Form: React.FC<FormProps> = (props) => {
   const { children, alignment = 'vertical' } = props;
 
   const formClasses = classNames({
@@ -15,6 +16,10 @@ const Form = (props) => {
       {children}
     </form>
   );
+};
+
+Form.defaultProps = {
+  alignment: 'vertical',
 };
 
 export default Form;

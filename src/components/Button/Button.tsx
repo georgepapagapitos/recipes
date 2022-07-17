@@ -20,4 +20,9 @@ const Button: React.FC<ButtonProps> = (props) => {
   );
 };
 
+Button.defaultProps = {
+  buttonType: 'primary',
+  size: 'medium',
+};
+
 export default Button;

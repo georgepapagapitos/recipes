@@ -13,7 +13,7 @@ const typographyMap = {
 };
 
 const Typography = (props) => {
-  const { variant, component, className, onClick, gutterBottom, children } = props;
+  const { variant, component = 'p', className, onClick, gutterBottom, children } = props;
 
   const Element = component ? typographyMap[component] : 'p';
 
