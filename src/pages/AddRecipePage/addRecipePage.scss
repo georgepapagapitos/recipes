@@ -6,12 +6,10 @@
 
   & .details {
     display: flex;
+    flex-direction: column;
   }
 
   & .ingredients {
-    display: flex;
-    flex-direction: column;
-
     &--item {
       display: flex;
       flex-direction: row;

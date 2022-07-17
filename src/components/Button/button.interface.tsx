@@ -4,4 +4,5 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   children?: React.ReactNode;
   onClick: () => void;
+  gutterBottom?: boolean;
 };

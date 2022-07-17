@@ -17,7 +17,6 @@ const HomePage = () => {
     <div className='home'>
       {recipes.map(recipe => (
         <Card
-          backgroundColor='blue'
           id={recipe.id}
           heading={recipe.name}
           content={recipe.description}
