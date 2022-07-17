@@ -1,6 +1,6 @@
 export interface CardProps {
   heading: string;
-  description: string;
+  content: string;
   image: string;
   altText: string;
   id: string;

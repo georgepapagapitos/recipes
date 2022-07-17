@@ -18,9 +18,7 @@ export const recipeReducer = (state, { type, payload }) => {
         ]
       };
     case 'REMOVE_RECIPE': {
-      const filteredRecipes = state.recipes.filter(
-        (recipe) => recipe.id !== payload
-      );
+      const filteredRecipes = state.recipes.filter((recipe) => recipe.id !== payload);
       return {
         recipes: filteredRecipes,
       };

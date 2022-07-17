@@ -1,6 +1,5 @@
 import React from 'react';
-import { Form, Input, Label } from '../../components/Form';
-import { Button } from '../../components';
+import { Button, Form, Input, Label } from '../../components';
 import './loginPage.scss';
 
 const LoginPage = () => {

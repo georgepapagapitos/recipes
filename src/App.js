@@ -2,9 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AddRecipePage, HomePage, RecipePage } from './pages';
 import { NavBar } from './components';
-
 import './styles/global.scss';
-
 
 const App = () => {
   return (

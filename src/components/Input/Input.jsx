@@ -9,10 +9,11 @@ const Input = (props) => {
 
   const inputClasses = classNames({
     'input': true,
-  })
+  });
 
   return (
     <input
+      autoComplete='off'
       placeholder={placeholderText}
       type={type}
       onChange={onChange}

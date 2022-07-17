@@ -6,13 +6,12 @@ import { CardProps } from './card.interface';
 import './card.scss';
 
 const Card = (props: CardProps) => {
-  const { heading, description, image, altText, id, backgroundColor = '' } = props;
+  const { heading, content, image, altText, id, backgroundColor = '' } = props;
 
   const navigate = useNavigate();
 
   const cardClasses = classNames({
     'card': true,
-    [altText]: true,
   });
 
   const goToRecipe = (recipeId: string): void => {
@@ -24,7 +23,7 @@ const Card = (props: CardProps) => {
   return (
     <div className={cardClasses}>
       <div className='card--header' style={styles} onClick={() => goToRecipe(id)}>
-        <Typography component='h2' className='card--header-heading'>{heading}</Typography>
+        {heading && <Typography component='h2' className='card--header-heading'>{heading}</Typography>}
         {image &&
           <img
             className='card--header-image'
@@ -34,7 +33,7 @@ const Card = (props: CardProps) => {
         }
       </div>
       <div className='card--content'>
-        <Typography component='p'>{description}</Typography>
+        <Typography component='p'>{content}</Typography>
       </div>
       <div className='card--cta'>
         <Button text='go to recipe' onClick={() => goToRecipe(id)} />
