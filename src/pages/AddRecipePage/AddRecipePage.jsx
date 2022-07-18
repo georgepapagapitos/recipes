@@ -6,6 +6,7 @@ import { Button, Form, Typography } from '../../components';
 import Ingredients from './Ingredients';
 import Details from './Details';
 import './addRecipePage.scss';
+import { validateFormInputs } from './utils/validateFormInputs';
 
 const AddRecipePage = () => {
   const { dispatch } = useContext(RecipeContext);
@@ -15,43 +16,13 @@ const AddRecipePage = () => {
   const [details, setDetails] = useState(initialDetails);
   const [ingredients, setIngredients] = useState(initialIngredients);
 
-  const handleAddInput = (e) => {
-    e.preventDefault();
-    setIngredients([...ingredients, { id: ingredients.length, name: '', amt: '', unit: '', prep: '' }]);
-  };
-
-  const validateFormInputs = (inputs) => {
-    if (!inputs.name) {
-      window.alert('missing recipe name');
-      return false;
-    }
-    if (!inputs.description) {
-      window.alert('missing recipe description');
-      return false;
-    }
-    if (inputs.ingredients.length) {
-      for (let ingredient of inputs.ingredients) {
-        if (ingredient.name) {
-          if (!ingredient.amt || !ingredient.unit || !ingredient.prep) {
-            window.alert(`missing amt, unit, or prep of ingredient: ${ingredient.name}`);
-            return false;
-          }
-        }
-      }
-    }
-    return true;
-  };
-
   const handleSubmit = (e, recipe) => {
     e.preventDefault();
     if (validateFormInputs(recipe)) {
       postRecipe(dispatch, recipe);
-      if (window.confirm('do u want to add another recipe?')) {
-        setDetails(initialDetails);
-        setIngredients(initialIngredients);
-      } else {
-        navigate('/');
-      }
+      setDetails(initialDetails);
+      setIngredients(initialIngredients);
+      navigate('/');
     };
   };
 
@@ -61,7 +32,6 @@ const AddRecipePage = () => {
       <Form>
         <Details details={details} setDetails={setDetails} />
         <Ingredients ingredients={ingredients} setIngredients={setIngredients} />
-        <Button text='add ingredient' onClick={handleAddInput} gutterBottom />
         <Button
           text='submit'
           onClick={(e) => handleSubmit(e, {

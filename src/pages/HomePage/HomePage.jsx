@@ -22,7 +22,7 @@ const HomePage = () => {
           content={recipe.description}
           altText={recipe.name}
           description={recipe.description}
-          key={recipe.id}
+          key={recipe.name}
         />
       ))}
     </div>
